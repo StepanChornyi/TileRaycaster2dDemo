@@ -1,0 +1,72 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>DDA Ray Cast Demo</title>
+  <meta name="author" content="~">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="initial-scale=1 maximum-scale=1 user-scalable=0" />
+
+  <meta property="og:image" content="preview.png" />
+  <meta property="si" content="preview.png" />
+
+  <style>
+    body,
+    html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      margin: auto;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      /* display:  none; */
+      padding: 0;
+      touch-action: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      cursor: auto;
+      position: absolute;
+    }
+
+    #canvas3D {
+      position: absolute;
+    }
+  </style>
+
+</head>
+
+<body style="color: black;">
+<div id="container">
+  </div>
+
+<script>//To prevent hosting advertisement insertion
+  const containerDiv =  document.getElementById('container');
+  const interval = setTimeout(() => clear(), 500);
+  
+  function clear(){
+    const divs = document.getElementsByTagName('DIV');
+
+    for (let i = 0; i < divs.length; i++) {
+     if(divs[i] === containerDiv||divs[i].parentElement ===containerDiv ){
+       continue;
+     }
+
+     divs[i].style.display = 'none';
+    }
+  };
+
+</script>
+
+</body>
+</html>
