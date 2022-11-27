@@ -30,7 +30,6 @@
       width: 100%;
       height: 100%;
       margin: 0;
-      /* display:  none; */
       padding: 0;
       touch-action: none;
       user-select: none;
@@ -39,34 +38,93 @@
       position: absolute;
     }
 
-    #canvas3D {
+    .engine_icon {
+      background-color: rgba(255, 255, 255, 0.5);
+      transition: background-color 0.2s;
+      border-radius: 0.3rem;
+      width: 3rem;
+    }
+
+    .engine_link {
       position: absolute;
+      z-index: 1000;
+      right: 0.9rem;
+      bottom: 0.5rem;
+    }
+
+    .tooltip {
+      position: relative;
+      display: inline-block;
+      border-bottom: 1px dotted black;
+    }
+
+    .tooltiptext {
+      opacity: 0;
+      transition: opacity 0.2s;
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 1rem;
+      width: 10rem;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #f1851e;
+      text-align: center;
+      padding: 5px 0;
+      border-radius: 6px;
+      left: -11rem;
+      position: absolute;
+      z-index: 1;
+    }
+
+    .engine_link:hover .tooltiptext {
+      opacity: 1;
+      transition: opacity 0.2s;
+    }
+
+    .engine_link:hover .engine_icon {
+      background-color: rgba(255, 255, 255, 0.8);
+      transition: background-color 0.2s;
+    }
+
+    .light_text {
+      font-weight: lighter;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.747);
     }
   </style>
 
 </head>
 
 <body style="color: black;">
-<div id="container">
+  <div id="container">
+
+    <span class="engine_link">
+      <a href="https://blacksmith2d.io/" class="tooltip">
+        <span class="tooltiptext"><span class="light_text">powered by</span> BLACKSMITH 2D</span>
+        <img class="engine_icon"
+          src="https://camo.githubusercontent.com/7332c7f4166a42a6b11b7e2482ec69f7f332ce1a6b70f201663d05ede7bd8e78/68747470733a2f2f626c61636b736d69746832642e696f2f6c6f676f2f626c61636b2e737667">
+      </a>
+    </span>
+
   </div>
 
-<script>//To prevent hosting advertisement insertion
-  const containerDiv =  document.getElementById('container');
-  const interval = setTimeout(() => clear(), 500);
-  
-  function clear(){
-    const divs = document.getElementsByTagName('DIV');
+  <script>//To prevent hosting advertisement insertion
+    const containerDiv = document.getElementById('container');
+    const interval = setTimeout(() => clear(), 500);
 
-    for (let i = 0; i < divs.length; i++) {
-     if(divs[i] === containerDiv||divs[i].parentElement ===containerDiv ){
-       continue;
-     }
+    function clear() {
+      const divs = document.getElementsByTagName('DIV');
 
-     divs[i].style.display = 'none';
-    }
-  };
+      for (let i = 0; i < divs.length; i++) {
+        if (divs[i] === containerDiv || divs[i].parentElement === containerDiv) {
+          continue;
+        }
 
-</script>
+        divs[i].style.display = 'none';
+      }
+    };
+
+  </script>
 
 </body>
+
 </html>
